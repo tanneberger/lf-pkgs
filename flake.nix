@@ -16,10 +16,6 @@
       rec {
         #checks = packages;
         packages = pkgs.callPackage ./pkgs/root.nix {};
-        #packages = { 
-        #  test = pkgs.callPackage ./pkgs/runtimes/reactor-cpp.nix { };
-        #  #pkgs.callPackage ./pkgs/root.nix { }
-        #};
       }
     );
 }

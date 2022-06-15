@@ -4,8 +4,19 @@ let
 in rec {
   reactor-cpp = pkgs.callPackage ./runtimes/reactor-cpp.nix { };
   
-  lf-alarm-clock = pkgs.callPackage ./fun/lf-alarm-clock.nix { 
+  lfAlarmClock = pkgs.callPackage ./cpp/lf-alarm-clock.nix { 
     buildLinguaFranca = buildLinguaFranca;
     reactor-cpp = reactor-cpp;
   };
+  helloLib = pkgs.callPackage ./cpp/hello_lib.nix { 
+    buildLinguaFranca = buildLinguaFranca;
+    reactor-cpp = reactor-cpp;
+  };
+  greeter = pkgs.callPackage ./cpp/greeter.nix { 
+    buildLinguaFranca = buildLinguaFranca;
+    reactor-cpp = reactor-cpp;
+    helloLib = helloLib;
+  };
+
+
 }

@@ -6,12 +6,12 @@ buildLinguaFranca {
   src = fetchFromGitHub {
     owner = "revol-xut";
     repo = "lf-alarm-clock";
-    rev = "93c2f97dd82406cf566e2cc4170892b577c4a0b1";
-    sha256 = "sha256-uHwh/vwInqC7RdvVJRgkrwbLzik7JjoiA5quCpYHK2g=";
+    rev = "d7e1265fa9a24484ed2bd3eb63ec9d3781ec0228";
+    sha256 = "sha256-K3qK1oYo27nSlj3WnTgfUr7CPaaUk71Ixb5EjftyTX8=";
     fetchSubmodules = true;
   };
 
-  buildInputs = with pkgs; [ boost169 git ];
+  buildInputs = with pkgs; [ git boost ];
   language = "cpp";
   mainReactor = "AlarmClock";
 

@@ -14,6 +14,7 @@
         pkgs = nixpkgs.legacyPackages.${system};
       in
       rec {
+        lib.buildLinguaFranca = pkgs.callPackage ./pkgs/wrapper.nix {};
         #checks = packages;
         packages = pkgs.callPackage ./pkgs/root.nix {};
       }

@@ -42,9 +42,9 @@ let
   # script of install commands that need to be performed
   installCommand = lib.strings.concatStringsSep "\n" (builtins.map moveDependencies filtered_lingua_franca);
 
-  patchPhase = if (contains "patchPhase" attrib) then (lib.getAttr "patchPhase" attrib) else "";
-  buildPhase = if (contains "buildPhase" attrib) then (lib.getAttr "buildPhase" attrib) else defaultBuildPhase;
-  installPhase = if (contains "installPhase" attrib) then installPhase else defaultInstallPhase; 
+  patchPhase = attrib.patchPhase or "";
+  buildPhase = attrib.buildPhase or defaultBuildPhase;
+  installPhase = attrib.installPhase or defaultInstallPhase;
 
 in stdenv.mkDerivation {
     name = name;
@@ -61,4 +61,6 @@ in stdenv.mkDerivation {
     # meta information fields 
     language = "cpp";
     lfPackage = true;
+
+    meta = attrib.meta or {};
 }

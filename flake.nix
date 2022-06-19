@@ -3,20 +3,30 @@
 
   inputs = {
     utils.url = "github:numtide/flake-utils";
-    nipkgs.url = "github:nixos/nixpkgs/nixos-22.05";
+    naersk.url = "github:nix-community/naersk";
+    nixpkgs-mozilla.url = "github:mozilla/nixpkgs-mozilla";
   };
 
-  outputs = inputs@{ self, utils, nixpkgs, ... }:
-  let 
-    systems = with nixpkgs; [ "x86_64-linux" "aarch64-linux" ];
-  in utils.lib.eachSystem systems (system:
+  outputs = inputs@{ self, utils, nixpkgs, naersk, nixpkgs-mozilla, ... }:
+    let
+      systems = with nixpkgs; [ "x86_64-linux" ]; #"aarch64-linux" ];
+    in
+    utils.lib.eachSystem systems (system:
       let
-        pkgs = nixpkgs.legacyPackages.${system};
+        pkgs = import nixpkgs {
+          overlays = [
+            #nixpkgs-mozilla.overlay.${system}
+          ];
+          inherit system;
+        };
+
       in
       rec {
         lib.buildLinguaFranca = pkgs.callPackage ./pkgs/wrapper.nix {};
         #checks = packages;
-        packages = pkgs.callPackage ./pkgs/root.nix {};
+        packages = pkgs.callPackages ./pkgs/root.nix {
+          naersk = naersk.lib.${system};
+        };
       }
     );
 }

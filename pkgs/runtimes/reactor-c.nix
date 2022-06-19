@@ -1,27 +1,27 @@
-{ pkgs, stdenv, cmake, gcc, fetchFromGithub, debug }:
-let
-  buildMode = if debug then "Debug" else "Release";
-in
+{ pkgs, stdenv, cmake, gcc, fetchFromGitHub}:
 stdenv.mkDerivation {
-  name = "cpp-lingua-franca-runtime";
-  src = fetchFromGithub {
+  name = "reactor-c";
+
+  src = fetchFromGitHub {
     owner = "lf-lang";
     repo = "reactor-c";
     rev = "f65b7a0491337770e5e81234210256004341a405";
-    sha256 = "";
+    sha256 = "sha256-rkRw9dNdOA0Poy3dfLoL0JBF1KqSu0Nwx73Yi2ix56w=";
   };
 
   nativeBuildInputs = with pkgs; [ cmake gcc ];
 
-  phases = ["buildPhase", "installPhase"];
+  phases = [ "unpackPhase" "buildPhase" "installPhase"];
 
   buildPhase = ''
+    ls -alh
     mkdir -p build && cd build
-    cmake -DCMAKE_BUILD_TYPE=${buildMode} -DCMAKE_INSTALL_PREFIX=./ ../
-    make install
+    cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=./ ../
+    make
   '';
 
   installPhase = ''
-    cp -r ./ $out/
+    mkdir -p $out/bin
+    cp -r ./ $out/bin
   '';
 }

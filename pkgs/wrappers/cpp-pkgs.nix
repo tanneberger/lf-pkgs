@@ -25,6 +25,7 @@ let
     mkdir -p $out/bin
     mkdir -p $out/src
     cp -r ./bin/* $out/bin/
+    cp ./bin/${mainReactor} $out/bin/${name}
     cp -r ./src/ $out/src
   '';
 

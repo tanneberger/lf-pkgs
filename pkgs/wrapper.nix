@@ -25,6 +25,7 @@ let
 
   runtime-map = {
     "cpp" = pkgs.callPackage ./wrappers/cpp-pkgs.nix;
+    "rust" = pkgs.callPackage ./wrappers/rust-pkgs.nix;
     "c" = reactor-c;
   };
 

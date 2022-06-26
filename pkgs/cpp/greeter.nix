@@ -1,4 +1,4 @@
-{pkgs, buildLinguaFranca, fetchgit, lingua-franca, reactor-cpp, hello-lib}: 
+{pkgs, buildLinguaFranca, fetchgit, hello-lib}: 
 buildLinguaFranca {
   name = "greeter";
   version = "0.1.0";

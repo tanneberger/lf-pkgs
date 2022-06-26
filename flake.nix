@@ -4,22 +4,25 @@
   inputs = {
     utils.url = "github:numtide/flake-utils";
     naersk.url = "github:nix-community/naersk";
-    nixpkgs-mozilla.url = "github:mozilla/nixpkgs-mozilla";
+    fenix.url = "github:nix-community/fenix";
+    #nixpkgs-mozilla.url = "github:mozilla/nixpkgs-mozilla";
   };
 
-  outputs = inputs@{ self, utils, nixpkgs, naersk, nixpkgs-mozilla, ... }:
+  outputs = inputs@{ self, utils, nixpkgs, naersk, fenix, ... }:
     let
       systems = with nixpkgs; [ "x86_64-linux" ]; #"aarch64-linux" ];
-    in
+          in
     utils.lib.eachSystem systems (system:
       let
         pkgs = import nixpkgs {
           overlays = [
-            #nixpkgs-mozilla.overlay.${system}
+            fenix.overlay
           ];
           inherit system;
         };
-
+        custom-naersk = naersk.lib.${system}.override {
+          inherit (fenix.packages.${system}.minimal) cargo rustc;
+        };
       in
       rec {
         lib.buildLinguaFranca = pkgs.callPackage ./pkgs/wrapper.nix {};

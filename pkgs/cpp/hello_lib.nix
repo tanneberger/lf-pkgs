@@ -1,4 +1,4 @@
-{pkgs, buildLinguaFranca, fetchgit, lingua-franca, reactor-cpp}: 
+{pkgs, buildLinguaFranca, fetchgit}: 
 buildLinguaFranca {
   name = "hello-world-lib";
   version = "0.1.0";

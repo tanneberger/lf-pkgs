@@ -1,4 +1,4 @@
-{pkgs, buildLinguaFranca, fetchFromGitHub, lingua-franca, reactor-cpp}: 
+{pkgs, buildLinguaFranca, fetchFromGitHub}: 
 buildLinguaFranca {
   name = "lf-alarm-clock";
   version = "0.1.0";
@@ -14,9 +14,4 @@ buildLinguaFranca {
   buildInputs = with pkgs; [ git boost ];
   language = "cpp";
   mainReactor = "AlarmClock";
-
-  buildPhase = ''
-    ls -alh
-    ${lingua-franca}/bin/lfc --external-runtime-path ${reactor-cpp}/ src/AlarmClock.lf
-  '';
 }

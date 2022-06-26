@@ -1,5 +1,4 @@
 { fetchFromGitHub
-, rustPlatform
 , lingua-franca
 , pkgs
 , lib
@@ -52,7 +51,7 @@ in stdenv.mkDerivation {
     version = version;
     src = src;
 
-    buildInputs = with pkgs; [ lingua-franca which git cargo ] ++ buildInputs;
+    buildInputs = with pkgs; [ lingua-franca which cmake git gcc10 ] ++ buildInputs;
     phases = [ "unpackPhase" "patchPhase" "buildPhase" "installPhase" ];
 
     patchPhase = installCommand + patchPhase;
@@ -60,7 +59,7 @@ in stdenv.mkDerivation {
     installPhase = installPhase;
 
     # meta information fields 
-    language = "rust";
+    language = "c";
     lfPackage = true;
 
     meta = attrib.meta or {};

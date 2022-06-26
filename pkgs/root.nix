@@ -19,15 +19,15 @@ in rec {
 
   lf-alarm-alock = pkgs.callPackage ./cpp/lf-alarm-clock.nix { 
     buildLinguaFranca = buildLinguaFranca;
-    reactor-cpp = reactor-cpp;
   };
   hello-lib = pkgs.callPackage ./cpp/hello_lib.nix { 
     buildLinguaFranca = buildLinguaFranca;
-    reactor-cpp = reactor-cpp;
   };
   greeter = pkgs.callPackage ./cpp/greeter.nix { 
     buildLinguaFranca = buildLinguaFranca;
-    reactor-cpp = reactor-cpp;
     hello-lib = hello-lib;
+  };
+  hello-lib-rust = pkgs.callPackage ./rust/hello_lib_rust.nix { 
+    buildLinguaFranca = buildLinguaFranca;
   };
 }

@@ -3,14 +3,13 @@ let
   wrapper-map = {
     "cpp" = ./wrappers/cpp-pkgs.nix;
     "rust" = ./wrappers/rust-pkgs.nix;
-    #"c" = reactor-c;
+    "c" = ./wrappers/c-pkgs.nix;
   };
   runtime-map = {
     "cpp" = reactor-cpp;
     "rust" = reactor-rust;
     "c" = reactor-c;
   };
-
 
 in (attrs:  let
   language = builtins.getAttr "language" attrs;

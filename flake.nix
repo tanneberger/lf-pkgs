@@ -25,7 +25,11 @@
         };
       in
       rec {
-        lib.buildLinguaFranca = pkgs.callPackage ./pkgs/wrapper.nix {};
+        lib.buildLinguaFranca = pkgs.callPackage ./pkgs/wrapper.nix {
+          reactor-cpp = packages.reactor-cpp;
+          reactor-c = packages.reactor-c;
+          reactor-rust = packages.reactor-rust;
+        };
         #checks = packages;
         packages = pkgs.callPackages ./pkgs/root.nix {
           naersk = naersk.lib.${system};

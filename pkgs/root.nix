@@ -27,7 +27,4 @@ in rec {
     buildLinguaFranca = buildLinguaFranca;
     hello-lib = hello-lib;
   };
-  hello-lib-rust = pkgs.callPackage ./rust/hello_lib_rust.nix { 
-    buildLinguaFranca = buildLinguaFranca;
-  };
 }

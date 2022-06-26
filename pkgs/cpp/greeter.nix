@@ -1,4 +1,4 @@
-{pkgs, buildLinguaFranca, fetchgit, lingua-franca, reactor-cpp, helloLib}: 
+{pkgs, buildLinguaFranca, fetchgit, lingua-franca, reactor-cpp, hello-lib}: 
 buildLinguaFranca {
   name = "greeter";
   version = "0.1.0";
@@ -9,7 +9,7 @@ buildLinguaFranca {
     sha256 = "sha256-VjREJLUiHGQRUSVstNlaEtBt7zlV4cuU9tHzbx5Re3M=";
   };
 
-  buildInputs = [ helloLib ];
+  buildInputs = [ hello-lib ];
 
   language = "cpp";
   mainReactor = "Greet";

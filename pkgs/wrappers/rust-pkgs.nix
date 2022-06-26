@@ -3,6 +3,7 @@
 , pkgs
 , lib
 , stdenv
+, reactor
 , attrib
 }:
 let 
@@ -15,10 +16,8 @@ let
   name = lib.getAttr "name" attrib;
   version = lib.getAttr "version" attrib;
 
-  reactor-rust = pkgs.callPackage ../runtimes/reactor-rust.nix { };
-
   defaultBuildPhase = ''
-    ${lingua-franca}/bin/lfc --external-runtime-path ${reactor-rust}/ --output ./ ./src/${mainReactor}.lf
+    ${lingua-franca}/bin/lfc --external-runtime-path ${reactor}/ --output ./ ./src/${mainReactor}.lf
   '';
 
   defaultInstallPhase = ''

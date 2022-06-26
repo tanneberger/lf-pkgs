@@ -1,36 +1,23 @@
-{pkgs, config, lib}:
-/*
-  {
-    name = "";
-    version = "";
-
-    src =;
-
-    language = ""; "cpp", "c", "python", "typescript", "rust"
-
-    buildPhase = ''
-    installPhase = ''
-    pathPhae = ''
-    etc
-  }
-*/
+{pkgs, config, lib, reactor-cpp, reactor-c, reactor-rust}:
 let
-  inherit (lib) concatStrings foldl foldl' genAttrs literalExpression maintainers
-                mapAttrsToList mkDefault mkEnableOption mkIf mkMerge mkOption
-                optional types mkOptionDefault flip attrNames;
-
-  reactor-cpp = pkgs.callPackage ./runtimes/reactor-cpp.nix { };
-
-  reactor-c = pkgs.callPackage ./runtimes/reactor-cpp.nix { };
-
+  wrapper-map = {
+    "cpp" = ./wrappers/cpp-pkgs.nix;
+    "rust" = ./wrappers/rust-pkgs.nix;
+    #"c" = reactor-c;
+  };
   runtime-map = {
-    "cpp" = pkgs.callPackage ./wrappers/cpp-pkgs.nix;
-    "rust" = pkgs.callPackage ./wrappers/rust-pkgs.nix;
+    "cpp" = reactor-cpp;
+    "rust" = reactor-rust;
     "c" = reactor-c;
   };
 
+
 in (attrs:  let
   language = builtins.getAttr "language" attrs;
+  wrapper = builtins.getAttr language wrapper-map;
   runtime = builtins.getAttr language runtime-map;
 
-in (runtime {attrib = attrs;}))
+in (pkgs.callPackage wrapper {
+  attrib = attrs;
+  reactor = runtime;
+}))

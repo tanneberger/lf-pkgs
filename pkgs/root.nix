@@ -9,17 +9,17 @@ in rec {
     naersk = naersk;
   };
 
-  lfAlarmClock = pkgs.callPackage ./cpp/lf-alarm-clock.nix { 
+  lf-alarm-alock = pkgs.callPackage ./cpp/lf-alarm-clock.nix { 
     buildLinguaFranca = buildLinguaFranca;
     reactor-cpp = reactor-cpp;
   };
-  helloLib = pkgs.callPackage ./cpp/hello_lib.nix { 
+  hello-lib = pkgs.callPackage ./cpp/hello_lib.nix { 
     buildLinguaFranca = buildLinguaFranca;
     reactor-cpp = reactor-cpp;
   };
   greeter = pkgs.callPackage ./cpp/greeter.nix { 
     buildLinguaFranca = buildLinguaFranca;
     reactor-cpp = reactor-cpp;
-    helloLib = helloLib;
+    hello-lib = hello-lib;
   };
 }

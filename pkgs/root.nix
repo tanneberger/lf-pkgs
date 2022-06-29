@@ -27,4 +27,8 @@ in rec {
     buildLinguaFranca = buildLinguaFranca;
     hello-lib = hello-lib;
   };
+
+  lf-square = pkgs.callPackage ./c/lf-square.nix {
+    buildLinguaFranca = buildLinguaFranca;
+  };
 }

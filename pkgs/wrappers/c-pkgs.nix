@@ -17,6 +17,7 @@ let
   version = lib.getAttr "version" attrib;
 
   defaultBuildPhase = ''
+    find ./src/
     ${lingua-franca}/bin/lfc --external-runtime-path ${reactor}/ --output ./ ./src/${mainReactor}.lf
   '';
 
@@ -25,12 +26,14 @@ let
     mkdir -p $out/src
     cp -r ./bin/* $out/bin/
     cp ./bin/${mainReactor} $out/bin/${name}
+    find ./src/
     cp -r ./src/* $out/src/
   '';
 
   # copies source files into the right place
   moveDependencies = (package: ''
     cp -r ${package}/src/* ./src/${package.name}/
+    find ./
   ''); 
   
   # this needs to expanded so only packages of the same language etc.

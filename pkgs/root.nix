@@ -17,7 +17,7 @@ in rec {
   reactor-c = rt-c;
   reactor-rust = rt-rust;
 
-  lf-alarm-alock = pkgs.callPackage ./cpp/lf-alarm-clock.nix { 
+  lf-alarm-clock = pkgs.callPackage ./cpp/lf-alarm-clock.nix { 
     buildLinguaFranca = buildLinguaFranca;
   };
   hello-lib = pkgs.callPackage ./cpp/hello_lib.nix { 

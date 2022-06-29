@@ -4,7 +4,7 @@
 ## How to Contribute Packages
 
 Assuming you have a lingua-franca project setup with [Weaver](https://github.com/revol-xut/weaver) 
-you can call **weaver publish** which generates nix code which should look approximately like this:
+you can call **weaver publish** which generates nix code which should look aproximetiely like this:
 
 ```
  pkgs/cpp/simple-greeter.nix
@@ -58,7 +58,7 @@ Now you can build the package with:
     sudo apt install nix-bin
 ```
 
-**Darwin + Everybody else**
+**Darwin + Eveybody else**
 
 ```bash
     $ sh <(curl -L https://nixos.org/nix/install)

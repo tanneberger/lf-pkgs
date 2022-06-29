@@ -25,7 +25,7 @@ let
     mkdir -p $out/src
     cp -r ./bin/* $out/bin/
     cp ./bin/${mainReactor} $out/bin/${name}
-    cp -r ./src/ $out/src
+    cp -r ./src/* $out/src/
   '';
 
   # copies source files into the right place

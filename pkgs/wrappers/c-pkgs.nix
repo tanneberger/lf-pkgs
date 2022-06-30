@@ -35,6 +35,7 @@ let
     find ./
     mkdir -p ./src/${package.name}
     cp -r ${package}/src/* ./src/${package.name}/
+    rm -f ./${package.name}/${package.mainReactor}.lf
   ''); 
   
   # this needs to expanded so only packages of the same language etc.
@@ -64,6 +65,7 @@ in stdenv.mkDerivation {
 
     # meta information fields 
     language = "c";
+    mainReactor = mainReactor;
     lfPackage = true;
 
     meta = attrib.meta or {};

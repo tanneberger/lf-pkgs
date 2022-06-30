@@ -32,8 +32,8 @@ let
 
   # copies source files into the right place
   moveDependencies = (package: ''
-    cp -r ${package}/src/* ./src/${package.name}/
     find ./
+    cp -r ${package}/src/* ./src/${package.name}/
   ''); 
   
   # this needs to expanded so only packages of the same language etc.

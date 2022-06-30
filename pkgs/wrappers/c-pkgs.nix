@@ -33,6 +33,7 @@ let
   # copies source files into the right place
   moveDependencies = (package: ''
     find ./
+    mkdir -p ./src/${package.name}
     cp -r ${package}/src/* ./src/${package.name}/
   ''); 
   

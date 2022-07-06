@@ -30,4 +30,8 @@ in rec {
   lf-square = pkgs.callPackage ./c/lf-square.nix {
     buildLinguaFranca = buildLinguaFranca;
   };
+  greeter-c = pkgs.callPackage ./c/greeter-c.nix {
+    buildLinguaFranca = buildLinguaFranca;
+    lf-square = lf-square;
+  };
 }

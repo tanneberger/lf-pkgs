@@ -4,8 +4,8 @@ buildLinguaFranca {
     version = "0.1.0";
     src = fetchgit {
         url = "https://gitea.tassilo-tanneberger.de/revol-xut/greeter-c.git";
-        rev = "7e1150b611de440db2b3691988151b3855a8fd08";
-        sha256 = "sha256-XJRoG5P8RsPFmQdXGplwf2m47+mFK6uPS0yQnAJoBwE=";
+        rev = "b5b836a35433ba0069732df97f4a31184c86562f";
+        sha256 = "sha256-OsG6q5cZnst1YEOgJK8y8EzqeSCiQ3l4QGz2A4OLEGs=";
     };
     language = "c";
     mainReactor = "Main";

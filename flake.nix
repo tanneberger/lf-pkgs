@@ -2,6 +2,7 @@
   description = "build script for the lingua-franca alarm clock";
 
   inputs = {
+    nixpkgs.url = "github:revol-xut/nixpkgs/lfc0.3";
     utils.url = "github:numtide/flake-utils";
     naersk.url = "github:nix-community/naersk";
     fenix.url = "github:nix-community/fenix";

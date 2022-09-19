@@ -42,6 +42,7 @@ let
   # script of install commands that need to be performed
   installCommand = lib.strings.concatStringsSep "\n" (builtins.map moveDependencies filtered_lingua_franca);
 
+  # this sets defaults if not specified
   patchPhase = attrib.patchPhase or "";
   buildPhase = attrib.buildPhase or defaultBuildPhase;
   installPhase = attrib.installPhase or defaultInstallPhase;

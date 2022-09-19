@@ -11,7 +11,12 @@ buildLinguaFranca {
     mainReactor = "Main";
     buildInputs = [ lf-square ];
     meta = with lib; {
-
+      description = "small demo which uses other lingua-franca packages";
+      homepage = "https://lf-lang.org";
+      longDescription = ''
+        Lorem Ipsum
+      '';
+      maintainers = with maintainers; [ tassilo ];
     };
 }
 
